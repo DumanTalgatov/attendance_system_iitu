@@ -101,4 +101,20 @@ class LoginApiTest extends TestCase
 //        $this->actingAs($user);
 //        $this->assertAuthenticated();
     }
+
+    public function test_valid_login_by_card()
+    {
+        $user = User::create([
+            'name' => "Duman",
+            'student_id' => 38546,
+            'email' => "duman@gmail.com",
+            'password' => Hash::make('123456')
+        ]);
+
+        $response = $this->json('POST', 'api/loginByCard', [
+            'student_id' => 38546,
+        ]);
+
+        $response->assertStatus(200);
+    }
 }
