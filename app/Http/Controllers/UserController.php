@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\CodeForFriend;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => "Duman",
-            'student_id' => 38547,
+            'student_id' => 38546,
             'email' => $fields['email'],
             'password' => bcrypt($fields['password']),
         ]);
@@ -61,6 +62,31 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function loginByCard(Request $request)
+    {
+        $fields = $request->validate([
+            "student_id" => "required"
+        ]);
+
+        $user = User::where("student_id", $fields["student_id"])->first();
+
+        if(!$user){
+            return response([
+                "error.student_id" => "Incorrect id"
+            ], 401);
+        }
+
+        $attendance = Attendance::create([
+            "student_id" => $fields["student_id"],
+            "type" => "card"
+        ]);
+
+        return  response([
+            "user" => $user,
+            "status" => 200
+        ], 200);
+    }
+
     public function loginByMachine(Request $request){
         $fields = $request->validate([
             "student_id" => "required",
@@ -80,6 +106,11 @@ class UserController extends Controller
                 "error.password" => "Incorrect password"
             ], 401);
         }
+
+        $attendance = Attendance::create([
+            "student_id" => $fields["student_id"],
+            "type" => "machine"
+        ]);
 
         return response([
             "user" => $user,
@@ -101,11 +132,16 @@ class UserController extends Controller
             ], 401);
         }
 
-//        if($user->code !== $fields['code']){
-//            return response([
-//                "error.code" => "Incorrect code"
-//            ], 401);
-//        }
+        if($user->code !== $fields['code']){
+            return response([
+                "error.code" => "Incorrect code"
+            ], 401);
+        }
+
+        $attendance = Attendance::create([
+            "student_id" => $fields["student_id"],
+            "type" => "by friend"
+        ]);
 
         return response([
             "user" => $user,

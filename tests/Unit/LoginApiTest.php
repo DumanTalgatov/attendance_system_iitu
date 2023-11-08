@@ -51,25 +51,25 @@ class LoginApiTest extends TestCase
 //        $response->assertStatus(401);
 //        $this->assertGuest();
 //    }
-//
-//    public function test_valid_login_by_machine()
-//    {
-//        $user = User::create([
-//            'name' => "Duman",
-//            'student_id' => 38546,
-//            'email' => "duman@gmail.com",
-//            'password' => Hash::make('123456')
-//        ]);
-//
-//        $response = $this->json('POST', 'api/loginByMachine', [
-//            'student_id' => 38546,
-//            'password' => '123456'
-//        ]);
-//
-//        $response->assertStatus(200);
-//        $this->actingAs($user);
-//        $this->assertAuthenticated();
-//    }
+
+    public function test_valid_login_by_machine()
+    {
+        $user = User::create([
+            'name' => "Duman",
+            'student_id' => 38546,
+            'email' => "duman@gmail.com",
+            'password' => Hash::make('123456')
+        ]);
+
+        $response = $this->json('POST', 'api/loginByMachine', [
+            'student_id' => 38546,
+            'password' => '123456'
+        ]);
+
+        $response->assertStatus(200);
+        $this->actingAs($user);
+        $this->assertAuthenticated();
+    }
 
     public function test_valid_login_by_friend()
     {
