@@ -18,10 +18,11 @@ class UserController extends Controller
         ]);
 
         $user = User::create([
-            'name' => "Duman",
-            'student_id' => 38546,
+            'name' => "Talgat",
+            'student_id' => 38547,
             'email' => $fields['email'],
             'password' => bcrypt($fields['password']),
+            'role' => 3
         ]);
 
         $token = $user->createToken('myapptoken')->plainTextToken;
