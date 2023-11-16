@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -20,6 +21,8 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/loginByMachine', [UserController::class, 'loginByMachine']);
 Route::post('/loginByFriend', [UserController::class, 'loginByFriend']);
 Route::post('/loginByCard', [UserController::class, 'loginByCard']);
+Route::get('/getAttendanceForStudent/{courseId?}/{year?}/{month?}', [AttendanceController::class, 'getAttendanceForStudent']);
+Route::get('/getAttendanceForTeacher/{courseId?}/{year?}/{month?}', [AttendanceController::class, 'getAttendanceForTeacher']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
