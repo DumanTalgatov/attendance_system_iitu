@@ -24,6 +24,11 @@ class ScheduleTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function testIsGroupIdValidParameter(){
+        $response = $this->get('api/getAttendanceForTeacher/?groupId=1');
+        $response->assertStatus(200);
+    }
+
     public function testIsYearInvalidParameter(){
         $response = $this->get('api/getAttendanceForStudent/?year=invalid_year');
         $response->assertStatus(422);
@@ -36,6 +41,11 @@ class ScheduleTest extends TestCase
 
     public function testIsCourseIdInvalidParameter(){
         $response = $this->get('api/getAttendanceForStudent/?courseId=ggg');
+        $response->assertStatus(422);
+    }
+
+    public function testIsGroupIdInvalidParameter(){
+        $response = $this->get('api/getAttendanceForTeacher/?groupId=ggg');
         $response->assertStatus(422);
     }
 
