@@ -34,7 +34,6 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
-//        Log::info(request()->all());
         $fields = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
