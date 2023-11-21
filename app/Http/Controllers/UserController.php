@@ -110,7 +110,7 @@ class UserController extends Controller
 
         $attendance = Attendance::create([
             "student_id" => $fields["student_id"],
-            "type" => "machine"
+            "type" => "code"
         ]);
 
         return response([

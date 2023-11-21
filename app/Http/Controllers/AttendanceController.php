@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\isEmpty;
@@ -10,7 +11,7 @@ use function PHPUnit\Framework\isEmpty;
 class AttendanceController extends Controller
 {
     public function getAttendanceForStudent(Request $request, $courseId = null, $year = null, $month = null){
-        $attendance = Attendance::query()->where("student_id", 38546);
+        $attendance = Attendance::with('course')->where("student_id", 38546);
 
         if ($request->courseId!=null && !is_numeric($request->courseId)){
             return response()->json(["error"=>"invalid parameter"], 422);
@@ -42,7 +43,7 @@ class AttendanceController extends Controller
     }
 
     public function getAttendanceForTeacher(Request $request, $courseId = null, $year = null, $month = null, $groupId = null){
-        $attendance = Attendance::query();
+        $attendance = Attendance::with('users', 'course')->where("course_id", $courseId);
 
         if ($request->groupId!=null && !is_numeric($request->groupId)){
             return response()->json(["error"=>"invalid parameter"], 422);
