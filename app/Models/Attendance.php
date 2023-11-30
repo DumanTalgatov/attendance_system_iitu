@@ -9,7 +9,7 @@ class Attendance extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["student_id", "type", "date", "course_id", "lesson_type"];
+    protected $fillable = ["student_id", "type", "date", "course_id", "lesson_type", "group_id"];
 
     public function course()
     {
@@ -19,5 +19,10 @@ class Attendance extends Model
     public function users()
     {
         return $this->belongsTo(User::class, 'student_id', 'student_id');
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class, 'group_id', 'id');
     }
 }

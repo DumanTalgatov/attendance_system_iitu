@@ -43,7 +43,7 @@ class AttendanceController extends Controller
     }
 
     public function getAttendanceForTeacher(Request $request, $courseId = null, $year = null, $month = null, $groupId = null){
-        $attendance = Attendance::with('users', 'course')->where("course_id", $courseId);
+        $attendance = Attendance::with('users', 'course', 'group')->orderBy("date");
 
         if ($request->groupId!=null && !is_numeric($request->groupId)){
             return response()->json(["error"=>"invalid parameter"], 422);

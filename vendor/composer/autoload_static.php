@@ -518,6 +518,7 @@ class ComposerStaticInit375b0d8b592be68f9cc23b67e78c0c9f
         'App\\Models\\CodeForFriend' => __DIR__ . '/../..' . '/app/Models/CodeForFriend.php',
         'App\\Models\\Course' => __DIR__ . '/../..' . '/app/Models/Course.php',
         'App\\Models\\Group' => __DIR__ . '/../..' . '/app/Models/Group.php',
+        'App\\Models\\MachineSchedule' => __DIR__ . '/../..' . '/app/Models/MachineSchedule.php',
         'App\\Models\\Schedule' => __DIR__ . '/../..' . '/app/Models/Schedule.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

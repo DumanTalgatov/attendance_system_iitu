@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("student_id");
+            $table->unsignedBigInteger("group_id");
 
             $table->foreign("student_id")->references("student_id")->on("users");
+            $table->foreign("group_id")->references("id")->on("groups");
             $table->string("type");
             $table->date("date");
             $table->string("course_id");

@@ -21,6 +21,7 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/loginByMachine', [UserController::class, 'loginByMachine']);
 Route::post('/loginByFriend', [UserController::class, 'loginByFriend']);
 Route::post('/loginByCard', [UserController::class, 'loginByCard']);
+Route::post('/test', [UserController::class, 'test']);
 Route::get('/getAttendanceForStudent/{courseId?}/{year?}/{month?}', [AttendanceController::class, 'getAttendanceForStudent']);
 Route::get('/getAttendanceForTeacher/{courseId?}/{year?}/{month?}/{groupId?}', [AttendanceController::class, 'getAttendanceForTeacher']);
 

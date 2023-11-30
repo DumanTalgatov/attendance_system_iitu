@@ -16,6 +16,7 @@ class AttendanceSeeder extends Seeder
             'student_id' => 38546,
             'type' => 'card',
             'date' => '2023-09-04',
+            'group_id' => 1,
             'course_id' => 1,
             'lesson_type' => 1,
         ]);
@@ -23,6 +24,7 @@ class AttendanceSeeder extends Seeder
             'student_id' => 38546,
             'type' => 'machine',
             'date' => '2023-09-05',
+            'group_id' => 1,
             'course_id' => 1,
             'lesson_type' => 2,
         ]);
@@ -30,6 +32,7 @@ class AttendanceSeeder extends Seeder
             'student_id' => 38546,
             'type' => 'friend',
             'date' => '2023-09-06',
+            'group_id' => 2,
             'course_id' => 2,
             'lesson_type' => 1,
         ]);
@@ -37,6 +40,7 @@ class AttendanceSeeder extends Seeder
             'student_id' => 38546,
             'type' => 'card',
             'date' => '2023-09-07',
+            'group_id' => 2,
             'course_id' => 2,
             'lesson_type' => 2,
         ]);

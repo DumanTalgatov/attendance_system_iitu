@@ -25,6 +25,7 @@ return array(
     'App\\Models\\CodeForFriend' => $baseDir . '/app/Models/CodeForFriend.php',
     'App\\Models\\Course' => $baseDir . '/app/Models/Course.php',
     'App\\Models\\Group' => $baseDir . '/app/Models/Group.php',
+    'App\\Models\\MachineSchedule' => $baseDir . '/app/Models/MachineSchedule.php',
     'App\\Models\\Schedule' => $baseDir . '/app/Models/Schedule.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

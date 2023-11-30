@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendance;
 use App\Models\CodeForFriend;
+use App\Models\MachineSchedule;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -30,6 +32,30 @@ class UserController extends Controller
         return response([
             "data" => $user,
             "token" => $token
+        ]);
+    }
+
+    public function test(Request $request){
+        $dateTimeString = $request->input('datetime');
+
+        // Create a Carbon instance from the datetime string
+        $carbonDateTime = Carbon::parse($dateTimeString);
+
+        // Get date separately
+        $date = $carbonDateTime->toDateString(); // Format: Y-m-d
+
+        // Get time separately
+        $time = $carbonDateTime->toTimeString(); // Format: H:i:s
+
+        // Convert date to weekday
+        $weekday = $carbonDateTime->format('l'); // Full textual representation of the day (e.g., Monday)
+
+        // Now you can use $date, $time, and $weekday as needed
+
+        return response()->json([
+            'date' => $date,
+            'time' => $time,
+            'weekday' => $weekday,
         ]);
     }
 
@@ -77,8 +103,35 @@ class UserController extends Controller
             ], 401);
         }
 
+        $dateTimeString = $request->input('datetime');
+
+        // Create a Carbon instance from the datetime string
+        $carbonDateTime = Carbon::parse($dateTimeString);
+
+        // Get date separately
+        $date = $carbonDateTime->toDateString(); // Format: Y-m-d
+
+        // Get time separately
+        $time = $carbonDateTime->toTimeString(); // Format: H:i:s
+
+        // Convert date to weekday
+        $weekday = $carbonDateTime->format('l'); // Full textual representation of the day (e.g., Monday)
+
+        $machineSchedule = MachineSchedule::select("course_id", "group_id", "lesson_type")
+            ->where("weekday", $weekday)
+            ->where("start_time", "<", $time)
+            ->where("end_time", ">", $time)
+            ->get();
+        $courseId = $machineSchedule->pluck('course_id')->toArray();
+        $groupId = $machineSchedule->pluck('group_id')->toArray();
+        $lessonType = $machineSchedule->pluck('lesson_type')->toArray();
+
         $attendance = Attendance::create([
             "student_id" => $fields["student_id"],
+            "group_id" => $groupId,
+            "date" => $date,
+            "course_id" => $courseId,
+            "lesson_type" => $lessonType,
             "type" => "card"
         ]);
 
