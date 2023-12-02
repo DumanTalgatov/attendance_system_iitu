@@ -11,7 +11,7 @@ class StudentFriendController extends Controller
     public function addFriends(Request $request)
     {
         $request->validate([
-            'friend_id' => 'required|numeric', // Adjust validation rules as needed
+            'friend_id' => 'required|numeric',
             'student_id' => 'required|numeric',
         ]);
 
