@@ -24,7 +24,9 @@ class StudentFriendController extends Controller
         $counts = StudentFriend::where("student_id", $studentId)->count();
 
         if ($counts >= 2) {
-            return "fail";
+            return response()->json([
+                "error" => "count of friend can't be more than 2"
+            ], 422);
         }
 
         if($studentsGroup->first() === $friendsGroup->first()){
@@ -32,9 +34,14 @@ class StudentFriendController extends Controller
                 "student_id" => $studentId,
                 "friend_id" => $friendId,
             ]);
-        }
 
-        return "success";
+            return response("success", 200);
+        }
+        else{
+            return response()->json([
+                "error" => "student from different groups"
+            ], 422);
+        }
     }
 
     public function deleteFriends(Request $request)
@@ -47,10 +54,20 @@ class StudentFriendController extends Controller
         $friendId = $request->input('friend_id');
         $studentId = $request->input('student_id');
 
-        StudentFriend::where("friend_id", $friendId)
-            ->where("student_id", $studentId)->delete();
+        $userFriend = StudentFriend::where("friend_id", $friendId)
+            ->where("student_id", $studentId)->first();
 
-        return "deleted";
+        if(!$userFriend) {
+            return response()->json([
+                "error" => "you don't have user with this id"
+            ], 422);
+        }
+
+        $userFriend->delete();
+
+        return response()->json([
+            "message" => "successfully deleted"
+        ], 200);
     }
 
     public function showFriends(Request $request)
@@ -63,6 +80,12 @@ class StudentFriendController extends Controller
             ->where("student_id", "!=", $studentId)
             ->where("group_id", $studentsGroup)
             ->get();
+
+        if(!$users) {
+            return response()->json([
+                "error" => "you don't have friends"
+            ], 200);
+        }
 
         return $users;
     }
