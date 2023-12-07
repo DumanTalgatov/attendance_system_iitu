@@ -33,6 +33,6 @@ class ExcuseController extends Controller
 
         return response()->json([
             "success" => "successfully added"
-        ]);
+        ], 200);
     }
 }
