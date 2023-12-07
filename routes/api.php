@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentFriendController;
+use App\Http\Controllers\ExcuseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::controller(StudentFriendController::class)->group(function () {
     Route::get("showFriends", "showFriends")->name("friends.showFriends");
     Route::get("searchFriends", "searchFriends")->name("friends.searchFriends");
 });
+Route::post('/addExcuse', [ExcuseController::class, 'addExcuse']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
