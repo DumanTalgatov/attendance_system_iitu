@@ -28,7 +28,7 @@ Route::get('/getAttendanceForStudent/{courseId?}/{year?}/{month?}', [AttendanceC
 Route::get('/getAttendanceForTeacher/{courseId?}/{year?}/{month?}/{groupId?}', [AttendanceController::class, 'getAttendanceForTeacher']);
 Route::controller(StudentFriendController::class)->group(function () {
     Route::post("addFriends", "addFriends")->name("friends.addFriends");
-    Route::delete("deleteFriends", "deleteFriends")->name("friends.deleteFriends");
+    Route::post("deleteFriends", "deleteFriends")->name("friends.deleteFriends");
     Route::get("showFriends", "showFriends")->name("friends.showFriends");
     Route::get("searchFriends", "searchFriends")->name("friends.searchFriends");
 });
