@@ -75,10 +75,12 @@ class StudentFriendController extends Controller
         $studentId = $request->input('student_id');
 
         $studentsGroup = User::where("student_id", $studentId)->pluck("group_id");
+        $userFriend = StudentFriend::where("student_id", $studentId)->pluck("friend_id");
 
         $users = User::where("role", 3)
             ->where("student_id", "!=", $studentId)
             ->where("group_id", $studentsGroup)
+            ->whereIn("student_id", $userFriend)
             ->get();
 
         if(!$users) {
