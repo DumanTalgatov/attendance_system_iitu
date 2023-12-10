@@ -14,8 +14,11 @@ class ExcuseController extends Controller
             "excuse_text" => "required|string|max:200"
         ]);
 
-        $file = $request->file('excuse_file');
-        $filePath = $file->store('public/excuse_files');
+        $filePath = null;
+        if($request->hasFile('excuse_file')) {
+            $filePath = time().'.'.$request->excuse_file->extension();
+            $request->excuse_file->move(storage_path('app/public/excuse_files'), $filePath);
+        }
 
         if($validator->fails()) {
             return response()->json([
