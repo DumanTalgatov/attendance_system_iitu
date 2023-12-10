@@ -44,7 +44,7 @@ class FriendsTest extends TestCase
 
     public function testDeleteFriend()
     {
-        $response = $this->json('DELETE', 'api/deleteFriends', [
+        $response = $this->json('POST', 'api/deleteFriends', [
             "student_id" => 38546,
             "friend_id" => 38548
         ]);
@@ -54,7 +54,7 @@ class FriendsTest extends TestCase
 
     public function testDeleteIncorrectFriend()
     {
-        $response = $this->json('DELETE', 'api/deleteFriends', [
+        $response = $this->json('POST', 'api/deleteFriends', [
             "student_id" => 38546,
             "friend_id" => 66558
         ]);
