@@ -121,17 +121,14 @@ class UserController extends Controller
             ->where("weekday", $weekday)
             ->where("start_time", "<", $time)
             ->where("end_time", ">", $time)
-            ->get();
-        $courseId = $machineSchedule->pluck('course_id')->toArray();
-        $groupId = $machineSchedule->pluck('group_id')->toArray();
-        $lessonType = $machineSchedule->pluck('lesson_type')->toArray();
+            ->first();
 
         $attendance = Attendance::create([
             "student_id" => $fields["student_id"],
-            "group_id" => $groupId,
+            "group_id" => $machineSchedule->group_id,
             "date" => $date,
-            "course_id" => $courseId,
-            "lesson_type" => $lessonType,
+            "course_id" => $machineSchedule->course_id,
+            "lesson_type" => $machineSchedule->lesson_type,
             "type" => "card"
         ]);
 
@@ -163,6 +160,10 @@ class UserController extends Controller
 
         $attendance = Attendance::create([
             "student_id" => $fields["student_id"],
+            "group_id" => $user->group_id,
+            "date" => now(),
+            "course_id" => $request->input("course_id"),
+            "lesson_type" => $request->input("lesson_type"),
             "type" => "code"
         ]);
 
@@ -179,6 +180,7 @@ class UserController extends Controller
         ]);
 
         $user = CodeForFriend::where('student_id', $fields['student_id'])->first();
+        $student = User::where('student_id', $fields["student_id"])->first();
 
         if(!$user){
             return response([
@@ -194,6 +196,10 @@ class UserController extends Controller
 
         $attendance = Attendance::create([
             "student_id" => $fields["student_id"],
+            "group_id" => $student->group_id,
+            "date" => now(),
+            "course_id" => $request->input("course_id"),
+            "lesson_type" => $request->input("lesson_type"),
             "type" => "by friend"
         ]);
 
