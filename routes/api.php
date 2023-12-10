@@ -31,6 +31,7 @@ Route::controller(StudentFriendController::class)->group(function () {
     Route::post("deleteFriends", "deleteFriends")->name("friends.deleteFriends");
     Route::get("showFriends", "showFriends")->name("friends.showFriends");
     Route::get("searchFriends", "searchFriends")->name("friends.searchFriends");
+    Route::post("sendCode", "sendCode")->name("friends.sendCode");
 });
 Route::post('/addExcuse', [ExcuseController::class, 'addExcuse']);
 

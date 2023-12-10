@@ -103,4 +103,33 @@ class StudentFriendController extends Controller
             ->where('name', 'like', "%$search%")
             ->get();
     }
+
+    public function sendCode(Request $request)
+    {
+        $request->validate([
+            'friend_id' => 'required|numeric',
+            'student_id' => 'required|numeric',
+        ]);
+
+        $friendId = $request->input('friend_id');
+        $studentId = $request->input('student_id');
+
+        $userFriend = StudentFriend::where("friend_id", $friendId)
+            ->where("student_id", $studentId)->first();
+
+        if(!$userFriend) {
+            return response()->json([
+                "error" => "you don't have user with this id"
+            ], 422);
+        }
+
+        $userFriend->update([
+            'code' => $request->code,
+            'permission' => 1
+        ]);
+
+        return response()->json([
+            "message" => "successfully send code"
+        ], 200);
+    }
 }
