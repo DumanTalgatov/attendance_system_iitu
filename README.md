@@ -7,60 +7,40 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## О проекте
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+attendance_system_iitu проект был разработан в ходе курса "Управление разработкой программного обеспечения и реинжениринг".
+Этот репозиторий содержит в себе код для backend части проекта написанный на фреймворке Laravel.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Технологии в использовании:
+- Laravel фреймворк
+- MySQL СУБД
+- PHPUnit для тестов
+- API запросы для связи с фронт частью
+- Postman
+- Github Actions для CI/CD
+- AWS для деплоя
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Ссылка на фронт
 
-## Learning Laravel
+Это ссылка репозиторий фронт части проекта написанный на VueJS [attendance_system_front](https://gitlab.com/aibek2050/attendance-system)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Изучение Laravel
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Laravel имеет самую обширную и полную [документацию](https://laravel.com/docs) и библиотеку видеоуроков среди всех современных фреймворков веб-приложений, что упрощает начало работы с фреймворком.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Вы также можете попробовать [Laravel Bootcamp](https://bootcamp.laravel.com), где вас проведут по созданию современного приложения Laravel с нуля.
 
-## Laravel Sponsors
+Если вам не хочется читать, вам может помочь [Laracasts](https://laracasts.com). Laracasts содержит более 2000 видеоуроков по ряду тем, включая Laravel, современный PHP, модульное тестирование и JavaScript. Повысьте свои навыки, покопавшись в нашей обширной видеотеке.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Содействие
 
-### Premium Partners
+Благодарим вас за возможность внести свой вклад в развитие фреймворка Laravel! Руководство по участию можно найти в [документации Laravel](https://laravel.com/docs/contributions).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Уязвимости безопасности
 
-## Contributing
+Если вы обнаружите уязвимость безопасности в Laravel, отправьте электронное письмо Тейлору Отвеллу по адресу [taylor@laravel.com](mailto:taylor@laravel.com). Все уязвимости безопасности будут оперативно устранены.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Лицензия
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Фреймворк Laravel — это программное обеспечение с открытым исходным кодом, лицензированное по [лицензии MIT](https://opensource.org/licenses/MIT).
